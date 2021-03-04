@@ -3,37 +3,51 @@ using System.Collections.Generic;
 using UnityEngine;
 using Vuforia;
 
-public class VirtualButton_Play : MonoBehaviour, IVirtualButtonEventHandler
+public class VirtualButton_Play : MonoBehaviour
 {
-
-    public GameObject buttonObj;
     public GameObject playerObj;
 
+    public Renderer buttonRenderer;
+
+    private VirtualButtonBehaviour[] virtualButtonBehaviours;
+
+    private readonly Color red = new Color(1, 0 , 0, 0.5f);
+    private readonly Color green = new Color(0, 1, 0, 0.5f);
 
     public void OnButtonPressed(VirtualButtonBehaviour vb)
     {
-        Debug.Log("<color=green>pressed</color>");
+        buttonRenderer.material.color = red;
+        Debug.Log($"<color=green> {vb.VirtualButtonName} pressed</color>");
     }
 
     public void OnButtonReleased(VirtualButtonBehaviour vb)
     {
-        Debug.Log("<color=yellow>released</color>");
+        buttonRenderer.material.color = green;
+        Debug.Log($"<color=yellow> {vb.VirtualButtonName} released</color>");
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        buttonObj = GameObject.Find("PlayButton");
-        buttonObj.GetComponent<VirtualButtonBehaviour>().RegisterEventHandler(this);
-        //buttonObject.GetComponent<VirtualButtonBehaviour>().RegisterOnButtonPressed(OnButtonPressed);
-        //buttonObject.GetComponent<VirtualButtonBehaviour>().RegisterOnButtonReleased(OnButtonReleased);
-        Debug.Log("<color=green>button ready</color>");
-        
+        virtualButtonBehaviours = GetComponentsInChildren<VirtualButtonBehaviour>();
+
+        foreach (var vb in virtualButtonBehaviours)
+        {
+            vb.RegisterOnButtonPressed(OnButtonPressed);
+            vb.RegisterOnButtonReleased(OnButtonReleased);
+            //vb.OnTrackerUpdated(true);
+            //vb.UpdateAreaRectangle();
+            //vb.UpdatePose();
+            //vb.UpdateSensitivity();
+
+            Debug.Log($"<color=yellow> {vb.VirtualButtonName} ready and {vb.Pressed}</color> ");
+        }
+
+        buttonRenderer.material.color = green;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
     }
 }

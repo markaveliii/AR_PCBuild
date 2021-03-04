@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QCARConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="qcar_config.xsd">
+  <Tracking>
+    <ImageTarget name="QR_1" size="0.025400 0.024674" />
+    <ImageTarget name="IMG_0388" size="0.050800 0.038100" />
+    <ImageTarget name="COOLER_MASTER" size="0.101600 0.076200" />
+    <ImageTarget name="MOBO" size="0.254000 0.333659" />
+    <ImageTarget name="iPhone_Screen" size="0.088900 0.165327" />
+    <ImageTarget name="Bookcover1" size="0.150000 0.227893" />
+  </Tracking>
+</QCARConfig>

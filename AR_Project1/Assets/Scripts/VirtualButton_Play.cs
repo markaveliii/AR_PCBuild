@@ -6,9 +6,9 @@ using UnityEngine.Video;
 
 public class VirtualButton_Play : MonoBehaviour
 {
-    public GameObject playerObj;
+    public GameObject videoPlayerObj;
 
-    public VideoPlayer videoplayer;
+    private VideoPlayer videoplayer;
 
     public Renderer buttonRenderer;
 
@@ -21,16 +21,23 @@ public class VirtualButton_Play : MonoBehaviour
     {
         buttonRenderer.material.color = red;
         Debug.Log($"<color=green> {vb.VirtualButtonName} pressed</color>");
-        if (playerObj.activeSelf)
+        //if (videoPlayerObj.activeSelf)
+        //{
+        if (videoplayer.isPlaying)
         {
             videoplayer.Pause();
-            playerObj.SetActive(false);
+            //playerObj.SetActive(false);
         }
         else
         {
-            playerObj.SetActive(true);
+            videoPlayerObj.SetActive(true);
             videoplayer.Play();
         }
+        //}
+        //else
+        //{
+        //    videoplayer.Play();
+        //}
     }
 
     public void OnButtonReleased(VirtualButtonBehaviour vb)
@@ -43,22 +50,19 @@ public class VirtualButton_Play : MonoBehaviour
     void Start()
     {
         virtualButtonBehaviours = GetComponentsInChildren<VirtualButtonBehaviour>();
+        videoplayer = videoPlayerObj.GetComponent<VideoPlayer>();
 
         foreach (var vb in virtualButtonBehaviours)
         {
             vb.RegisterOnButtonPressed(OnButtonPressed);
             vb.RegisterOnButtonReleased(OnButtonReleased);
-            //vb.OnTrackerUpdated(true);
-            //vb.UpdateAreaRectangle();
-            //vb.UpdatePose();
-            //vb.UpdateSensitivity();
 
             Debug.Log($"<color=yellow> {vb.VirtualButtonName} ready and {vb.Pressed}</color> ");
         }
 
         buttonRenderer.material.color = green;
 
-        playerObj.SetActive(false);
+        //videoPlayerObj.SetActive(false);
     }
 
     // Update is called once per frame

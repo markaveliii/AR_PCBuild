@@ -2,10 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Vuforia;
+using UnityEngine.Video;
 
 public class VirtualButton_Play : MonoBehaviour
 {
     public GameObject playerObj;
+
+    public VideoPlayer videoplayer;
 
     public Renderer buttonRenderer;
 
@@ -18,6 +21,7 @@ public class VirtualButton_Play : MonoBehaviour
     {
         buttonRenderer.material.color = red;
         Debug.Log($"<color=green> {vb.VirtualButtonName} pressed</color>");
+        videoplayer.GetComponent<VideoPlayer>().Play();
     }
 
     public void OnButtonReleased(VirtualButtonBehaviour vb)

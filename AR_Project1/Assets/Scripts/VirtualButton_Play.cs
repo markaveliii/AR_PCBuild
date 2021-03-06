@@ -14,8 +14,10 @@ public class VirtualButton_Play : MonoBehaviour
 
     private VirtualButtonBehaviour[] virtualButtonBehaviours;
 
-    private readonly Color red = new Color(1, 0 , 0, 0.5f);
+#pragma warning disable IDE0090 // Use 'new(...)'
+    private readonly Color red = new Color(1, 0, 0, 0.5f);
     private readonly Color green = new Color(0, 1, 0, 0.5f);
+#pragma warning restore IDE0090 // Use 'new(...)'
 
     public void OnButtonPressed(VirtualButtonBehaviour vb)
     {
@@ -66,7 +68,7 @@ public class VirtualButton_Play : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
-    {
-    }
+    //void Update()
+    //{
+    //}
 }

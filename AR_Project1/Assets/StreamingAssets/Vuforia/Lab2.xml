@@ -2,6 +2,9 @@
 <QCARConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="qcar_config.xsd">
   <Tracking>
     <ImageTarget name="QR_1" size="0.025400 0.024674" />
+    <ImageTarget name="RAM_QR" size="0.025400 0.025258" />
+    <ImageTarget name="PSU_QR" size="0.025400 0.024856" />
+    <ImageTarget name="MOBO_QR" size="0.025400 0.025400" />
     <ImageTarget name="IMG_0388" size="0.050800 0.038100" />
     <ImageTarget name="COOLER_MASTER" size="0.101600 0.076200" />
     <ImageTarget name="MOBO" size="0.254000 0.333659" />

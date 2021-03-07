@@ -6,6 +6,10 @@ using UnityEngine.Video;
 
 public class VirtualButton_Play : MonoBehaviour
 {
+    public Material playButtonMat;
+
+    public Material pauseButtonMat;
+
     public GameObject videoPlayerObj;
 
     private VideoPlayer videoplayer;
@@ -28,12 +32,14 @@ public class VirtualButton_Play : MonoBehaviour
         if (videoplayer.isPlaying)
         {
             videoplayer.Pause();
+            buttonRenderer.material = playButtonMat;
             //playerObj.SetActive(false);
         }
         else
         {
             videoPlayerObj.SetActive(true);
             videoplayer.Play();
+            buttonRenderer.material = pauseButtonMat;
         }
         //}
         //else

@@ -13,7 +13,7 @@ public class TimedObject : MonoBehaviour
 
     public Endpoint[] endpoints;
 
-    private int index = 0;
+    private int remaining;
     private Renderer rend;
     private VideoPlayer videoPlayer;
     private bool disabled = true;
@@ -21,6 +21,7 @@ public class TimedObject : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        remaining = endpoints.Length;
         rend = GetComponent<Renderer>();
         videoPlayer = GetComponentInParent<VideoPlayer>();
 
@@ -32,10 +33,10 @@ public class TimedObject : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (index < endpoints.Length)
+        if (remaining > 0)
         {
             var time = videoPlayer.time;
-            var endpoint = endpoints[index];
+            var endpoint = endpoints[endpoints.Length - remaining];
             if (time >= endpoint.start)
             {
                 if (time >= endpoint.end)
@@ -43,7 +44,7 @@ public class TimedObject : MonoBehaviour
                     rend.enabled = false;
                     gameObject.layer = 8;
                     disabled = true;
-                    ++index;
+                    --remaining;
                 }
                 else if (disabled)
                 {
@@ -52,6 +53,10 @@ public class TimedObject : MonoBehaviour
                     disabled = false;
                 }
             }
+        }
+        else
+        {
+            gameObject.SetActive(false);
         }
     }
 }

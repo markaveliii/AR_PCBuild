@@ -135,7 +135,6 @@ GameObject:
   - component: {fileID: 21839883}
   - component: {fileID: 21839882}
   - component: {fileID: 21839881}
-  - component: {fileID: 21839887}
   m_Layer: 0
   m_Name: ImageTarget_Cooler
   m_TagString: Untagged
@@ -269,20 +268,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &21839887
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 21839880}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c992acef4b8a8b1408d783752c8ba59a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  videoPlayerObj: {fileID: 1575338642}
-  buttonRenderer: {fileID: 714690606}
 --- !u!43 &48058188
 Mesh:
   m_ObjectHideFlags: 0
@@ -485,6 +470,7 @@ GameObject:
   - component: {fileID: 274287767}
   - component: {fileID: 274287769}
   - component: {fileID: 274287768}
+  - component: {fileID: 274287770}
   m_Layer: 0
   m_Name: Timestamp
   m_TagString: timestamp
@@ -567,6 +553,18 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!114 &274287770
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 274287766}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d40faaf3aedf49a47bc35d2285255264, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &302832750
 GameObject:
   m_ObjectHideFlags: 0
@@ -956,7 +954,7 @@ Camera:
   m_Depth: 1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 55
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -1137,8 +1135,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb13c1d2a607e8f419251746b2ac7c16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timestampMesh: {fileID: 1793954548}
   arrowInfos: []
+  videoPlayer: {fileID: 0}
 --- !u!43 &599650012
 Mesh:
   m_ObjectHideFlags: 0
@@ -2540,13 +2538,14 @@ GameObject:
   - component: {fileID: 1363656829}
   - component: {fileID: 1363656828}
   - component: {fileID: 1363656827}
-  m_Layer: 0
+  - component: {fileID: 1363656830}
+  m_Layer: 8
   m_Name: HelpfulText (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!102 &1363656827
 TextMesh:
   serializedVersion: 3
@@ -2622,6 +2621,21 @@ Transform:
   m_Father: {fileID: 1575338643}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1363656830
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1363656826}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97ee628da519f854298baed796feb5b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  endpoints:
+  - start: 15
+    end: 19
 --- !u!1 &1376514457
 GameObject:
   m_ObjectHideFlags: 0
@@ -3030,6 +3044,7 @@ GameObject:
   - component: {fileID: 1505818249}
   - component: {fileID: 1505818251}
   - component: {fileID: 1505818250}
+  - component: {fileID: 1505818252}
   m_Layer: 0
   m_Name: Timestamp
   m_TagString: timestamp
@@ -3112,6 +3127,18 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!114 &1505818252
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1505818248}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d40faaf3aedf49a47bc35d2285255264, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1575338642
 GameObject:
   m_ObjectHideFlags: 0
@@ -3125,7 +3152,7 @@ GameObject:
   - component: {fileID: 1575338646}
   - component: {fileID: 1575338645}
   - component: {fileID: 1575338644}
-  - component: {fileID: 1575338649}
+  - component: {fileID: 1575338648}
   m_Layer: 0
   m_Name: VideoPlayer
   m_TagString: Untagged
@@ -3245,7 +3272,7 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1575338642}
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &1575338649
+--- !u!114 &1575338648
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3257,14 +3284,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb13c1d2a607e8f419251746b2ac7c16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timestampMesh: {fileID: 2031039049}
-  arrowInfos:
-  - arrowObject: {fileID: 2120804531}
-    start: 10
-    end: 14
-  - arrowObject: {fileID: 1363656826}
-    start: 15
-    end: 19
+  arrowInfos: []
+  videoPlayer: {fileID: 0}
 --- !u!1 &1600036389
 GameObject:
   m_ObjectHideFlags: 0
@@ -3408,11 +3429,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb13c1d2a607e8f419251746b2ac7c16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timestampMesh: {fileID: 274287768}
   arrowInfos:
-  - arrowObject: {fileID: 0}
-    start: 0
-    end: 0
+  - {arrowObject: {fileID: 0}, start: 0, end: 0}
+  videoPlayer: {fileID: 0}
 --- !u!1 &1655779015
 GameObject:
   m_ObjectHideFlags: 0
@@ -3761,6 +3780,7 @@ GameObject:
   - component: {fileID: 1793954547}
   - component: {fileID: 1793954549}
   - component: {fileID: 1793954548}
+  - component: {fileID: 1793954550}
   m_Layer: 0
   m_Name: Timestamp
   m_TagString: timestamp
@@ -3843,6 +3863,18 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!114 &1793954550
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1793954546}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d40faaf3aedf49a47bc35d2285255264, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!21 &1807131410
 Material:
   serializedVersion: 6
@@ -4014,8 +4046,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb13c1d2a607e8f419251746b2ac7c16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timestampMesh: {fileID: 1505818250}
   arrowInfos: []
+  videoPlayer: {fileID: 0}
 --- !u!1 &1885299890
 GameObject:
   m_ObjectHideFlags: 0
@@ -4311,6 +4343,7 @@ GameObject:
   - component: {fileID: 2031039048}
   - component: {fileID: 2031039050}
   - component: {fileID: 2031039049}
+  - component: {fileID: 2031039051}
   m_Layer: 0
   m_Name: Timestamp
   m_TagString: timestamp
@@ -4393,6 +4426,18 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!114 &2031039051
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2031039047}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d40faaf3aedf49a47bc35d2285255264, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!43 &2120401670
 Mesh:
   m_ObjectHideFlags: 0
@@ -4567,13 +4612,14 @@ GameObject:
   - component: {fileID: 2120804532}
   - component: {fileID: 2120804534}
   - component: {fileID: 2120804533}
-  m_Layer: 0
+  - component: {fileID: 2120804535}
+  m_Layer: 8
   m_Name: HelpfulText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2120804532
 Transform:
   m_ObjectHideFlags: 0
@@ -4652,3 +4698,18 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!114 &2120804535
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2120804531}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97ee628da519f854298baed796feb5b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  endpoints:
+  - start: 10
+    end: 14

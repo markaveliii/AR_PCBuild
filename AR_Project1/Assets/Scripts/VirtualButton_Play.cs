@@ -25,10 +25,7 @@ public class VirtualButton_Play : MonoBehaviour
 
     public void OnButtonPressed(VirtualButtonBehaviour vb)
     {
-        buttonRenderer.material.color = red;
         Debug.Log($"<color=green> {vb.VirtualButtonName} pressed</color>");
-        //if (videoPlayerObj.activeSelf)
-        //{
         if (videoplayer.isPlaying)
         {
             videoplayer.Pause();
@@ -41,11 +38,7 @@ public class VirtualButton_Play : MonoBehaviour
             videoplayer.Play();
             buttonRenderer.material = pauseButtonMat;
         }
-        //}
-        //else
-        //{
-        //    videoplayer.Play();
-        //}
+        buttonRenderer.material.color = red;
     }
 
     public void OnButtonReleased(VirtualButtonBehaviour vb)
@@ -68,9 +61,9 @@ public class VirtualButton_Play : MonoBehaviour
             Debug.Log($"<color=yellow> {vb.VirtualButtonName} ready and {vb.Pressed}</color> ");
         }
 
-        buttonRenderer.material.color = green;
+        playButtonMat.color = green;
+        pauseButtonMat.color = green;
 
-        //videoPlayerObj.SetActive(false);
     }
 
     // Update is called once per frame

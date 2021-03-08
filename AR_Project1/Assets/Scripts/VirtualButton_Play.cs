@@ -6,17 +6,13 @@ using UnityEngine.Video;
 
 public class VirtualButton_Play : MonoBehaviour
 {
+    public GameObject videoPlayerObj;
+    public Renderer buttonRenderer;
     public Material playButtonMat;
-
     public Material pauseButtonMat;
 
-    public GameObject videoPlayerObj;
-
-    private VideoPlayer videoplayer;
-
-    public Renderer buttonRenderer;
-
     private VirtualButtonBehaviour[] virtualButtonBehaviours;
+    private VideoPlayer videoplayer;
 
 #pragma warning disable IDE0090 // Use 'new(...)'
     private readonly Color red = new Color(1, 0, 0, 0.5f);

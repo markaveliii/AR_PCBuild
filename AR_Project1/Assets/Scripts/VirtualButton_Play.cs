@@ -15,8 +15,8 @@ public class VirtualButton_Play : MonoBehaviour
     private VideoPlayer videoplayer;
 
 #pragma warning disable IDE0090 // Use 'new(...)'
-    private readonly Color red = new Color(1, 0, 0, 0.5f);
-    private readonly Color green = new Color(0, 1, 0, 0.5f);
+    private readonly Color red = new Color(1, 0, 0, 0.75f);
+    private readonly Color green = new Color(0, 1, 0, 0.75f);
 #pragma warning restore IDE0090 // Use 'new(...)'
 
     public void OnButtonPressed(VirtualButtonBehaviour vb)

@@ -7,12 +7,12 @@ using UnityEngine.Video;
 public class VirtualButton_Play : MonoBehaviour
 {
     public GameObject videoPlayerObj;
-
-    private VideoPlayer videoplayer;
-
     public Renderer buttonRenderer;
+    public Material playButtonMat;
+    public Material pauseButtonMat;
 
     private VirtualButtonBehaviour[] virtualButtonBehaviours;
+    private VideoPlayer videoplayer;
 
 #pragma warning disable IDE0090 // Use 'new(...)'
     private readonly Color red = new Color(1, 0, 0, 0.5f);
@@ -21,25 +21,20 @@ public class VirtualButton_Play : MonoBehaviour
 
     public void OnButtonPressed(VirtualButtonBehaviour vb)
     {
-        buttonRenderer.material.color = red;
         Debug.Log($"<color=green> {vb.VirtualButtonName} pressed</color>");
-        //if (videoPlayerObj.activeSelf)
-        //{
         if (videoplayer.isPlaying)
         {
             videoplayer.Pause();
+            buttonRenderer.material = playButtonMat;
             //playerObj.SetActive(false);
         }
         else
         {
             videoPlayerObj.SetActive(true);
             videoplayer.Play();
+            buttonRenderer.material = pauseButtonMat;
         }
-        //}
-        //else
-        //{
-        //    videoplayer.Play();
-        //}
+        buttonRenderer.material.color = red;
     }
 
     public void OnButtonReleased(VirtualButtonBehaviour vb)
@@ -62,9 +57,9 @@ public class VirtualButton_Play : MonoBehaviour
             Debug.Log($"<color=yellow> {vb.VirtualButtonName} ready and {vb.Pressed}</color> ");
         }
 
-        buttonRenderer.material.color = green;
+        playButtonMat.color = green;
+        pauseButtonMat.color = green;
 
-        //videoPlayerObj.SetActive(false);
     }
 
     // Update is called once per frame

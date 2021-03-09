@@ -9,7 +9,6 @@ public class VirtualButton_Play : MonoBehaviour
     public Renderer playPauseRenderer;
     public Material playButtonMat;
     public Material pauseButtonMat;
-
     private VirtualButtonBehaviour[] virtualButtonBehaviours;
     private VideoPlayer videoplayer;
 
@@ -20,7 +19,7 @@ public class VirtualButton_Play : MonoBehaviour
 
     public void OnButtonPressed(VirtualButtonBehaviour vb)
     {
-        //Renderer buttonRenderer = vb.GetComponentInChildren<Renderer>();
+        Renderer buttonRenderer = vb.GetComponentInChildren<Renderer>();
         Debug.Log($"<color=green> {vb.VirtualButtonName} pressed</color>");
         if (vb.VirtualButtonName == "PlayPause")
         {
@@ -34,7 +33,7 @@ public class VirtualButton_Play : MonoBehaviour
             {
                 //videoPlayerObj.SetActive(true);
                 videoplayer.Play();
-                //buttonRenderer.material = pauseButtonMat;
+                buttonRenderer.material = pauseButtonMat;
             }
             //playPauseRenderer.material.color = red;
         }

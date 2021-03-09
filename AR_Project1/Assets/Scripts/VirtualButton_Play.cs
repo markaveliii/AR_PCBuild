@@ -46,6 +46,7 @@ public class VirtualButton_Play : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        buttonRenderer.material = playButtonMat;
         virtualButtonBehaviours = GetComponentsInChildren<VirtualButtonBehaviour>();
         videoplayer = videoPlayerObj.GetComponent<VideoPlayer>();
 
@@ -63,7 +64,11 @@ public class VirtualButton_Play : MonoBehaviour
     }
 
     // Update is called once per frame
-    //void Update()
-    //{
-    //}
+    void Update()
+    {
+        if (videoplayer.isPaused)
+        {
+            buttonRenderer.material = playButtonMat;
+        }
+    }
 }

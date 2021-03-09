@@ -6,8 +6,7 @@ using UnityEngine.Video;
 
 public class VirtualButton_Play : MonoBehaviour
 {
-    public GameObject videoPlayerObj;
-    public Renderer buttonRenderer;
+    public Renderer playPauseRenderer;
     public Material playButtonMat;
     public Material pauseButtonMat;
 
@@ -21,46 +20,64 @@ public class VirtualButton_Play : MonoBehaviour
 
     public void OnButtonPressed(VirtualButtonBehaviour vb)
     {
+        //Renderer buttonRenderer = vb.GetComponentInChildren<Renderer>();
         Debug.Log($"<color=green> {vb.VirtualButtonName} pressed</color>");
-        if (videoplayer.isPlaying)
+        if (vb.VirtualButtonName == "PlayPause")
         {
-            videoplayer.Pause();
-            buttonRenderer.material = playButtonMat;
-            //playerObj.SetActive(false);
+            if (videoplayer.isPlaying)
+            {
+                videoplayer.Pause();
+                playPauseRenderer.material = playButtonMat;
+                //playerObj.SetActive(false);
+            }
+            else
+            {
+                //videoPlayerObj.SetActive(true);
+                videoplayer.Play();
+                //buttonRenderer.material = pauseButtonMat;
+            }
+            //playPauseRenderer.material.color = red;
         }
-        else
+
+        if (vb.VirtualButtonName == "Restart")
         {
-            videoPlayerObj.SetActive(true);
-            videoplayer.Play();
-            buttonRenderer.material = pauseButtonMat;
+            bool wasPlaying = videoplayer.isPlaying;
+            videoplayer.Stop();
+            if (wasPlaying)
+                videoplayer.Play();
+            //restartRenderer.material.color = red;
+            var timedObjects = GetComponentsInChildren<TimedObject>();
+
+            foreach (var timedObj in timedObjects)
+            {
+                timedObj.Restart();
+            }
         }
-        buttonRenderer.material.color = red;
+        vb.GetComponentInChildren<Renderer>().material.color = red;
     }
 
     public void OnButtonReleased(VirtualButtonBehaviour vb)
     {
-        buttonRenderer.material.color = green;
         Debug.Log($"<color=yellow> {vb.VirtualButtonName} released</color>");
+        vb.GetComponentInChildren<Renderer>().material.color = green;
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        buttonRenderer.material = playButtonMat;
         virtualButtonBehaviours = GetComponentsInChildren<VirtualButtonBehaviour>();
-        videoplayer = videoPlayerObj.GetComponent<VideoPlayer>();
+        videoplayer = GetComponentInChildren<VideoPlayer>();
 
         foreach (var vb in virtualButtonBehaviours)
         {
             vb.RegisterOnButtonPressed(OnButtonPressed);
             vb.RegisterOnButtonReleased(OnButtonReleased);
 
-            Debug.Log($"<color=yellow> {vb.VirtualButtonName} ready and {vb.Pressed}</color> ");
+            Debug.Log($"<color=yellow> {vb.VirtualButtonName} on {gameObject.name} initialized</color> ");
         }
 
         playButtonMat.color = green;
         pauseButtonMat.color = green;
-
     }
 
     // Update is called once per frame
@@ -74,6 +91,6 @@ public class VirtualButton_Play : MonoBehaviour
 
     public void OnTargetLost()
     {
-        buttonRenderer.material = playButtonMat;
+        playPauseRenderer.material = playButtonMat;
     }
 }

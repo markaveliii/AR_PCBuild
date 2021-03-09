@@ -11,6 +11,8 @@ public class TimedObject : MonoBehaviour
     public double end;
     }
 
+    public AnimationCurve visibility;
+
     public Endpoint[] endpoints;
 
     private int remaining;
@@ -18,16 +20,21 @@ public class TimedObject : MonoBehaviour
     private VideoPlayer videoPlayer;
     private bool disabled = true;
 
+    void Init()
+    {
+        remaining = endpoints.Length;
+        rend.enabled = false;
+        disabled = true;
+        gameObject.layer = 8;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
-        remaining = endpoints.Length;
         rend = GetComponent<Renderer>();
         videoPlayer = GetComponentInParent<VideoPlayer>();
 
-        Debug.Log("do inactive objects run script?");
-        rend.enabled = false;
-        gameObject.layer = 8;
+        Restart();
     }
 
     // Update is called once per frame
@@ -54,9 +61,7 @@ public class TimedObject : MonoBehaviour
                 }
             }
         }
-        else
-        {
-            gameObject.SetActive(false);
-        }
     }
+
+    public void Restart() => Init();
 }

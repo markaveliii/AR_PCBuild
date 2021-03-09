@@ -64,11 +64,16 @@ public class VirtualButton_Play : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    //void Update()
+    //{
+    //    if (videoplayer.isPaused)
+    //    {
+    //        buttonRenderer.material = playButtonMat;
+    //    }
+    //}
+
+    public void OnTargetLost()
     {
-        if (videoplayer.isPaused)
-        {
-            buttonRenderer.material = playButtonMat;
-        }
+        buttonRenderer.material = playButtonMat;
     }
 }
